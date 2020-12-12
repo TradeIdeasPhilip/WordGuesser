@@ -14,7 +14,9 @@ async function loadWords() {
 
 async function initOnce() {
   words = await loadWords();
-  alert("loaded " + words.size + " words.");
+  const statusInput = document.getElementById("dictionary-status");
+  statusInput.innerText = "Loaded " + words.size + " words.";
+  updateGUI();
 }
 
 // Generate all permutations of the given string.
@@ -83,8 +85,10 @@ function patternChanged() {
 }
 
 function updateGUI() {
-  patternChanged();
-  availableChanged();
+  if (words) {
+    patternChanged();
+    availableChanged();  
+  } // else wait until words gets loaded, then someone will automatically call updateGUI() again.
 }
 
 function showAll() {
