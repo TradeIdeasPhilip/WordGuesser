@@ -55,6 +55,9 @@ function availableChanged() {
       currentlyDisplayed.push(string);
     }
   });
+  if (currentlyDisplayed.length == 0) {
+    output.innerHTML = "<I>No matches.</I>";
+  }
 }
 
 function makeRegularExpression(input) {
