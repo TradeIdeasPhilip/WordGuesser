@@ -36,13 +36,17 @@ function permutations(available, minLength = 3) {
 // This is a global variable only debugging and development.
 const currentlyDisplayed = [];
 
-function availableChanged(availableInput) {
+// Only display words matching this regular expression.
+let re;  
+
+function availableChanged() {
+  const availableInput = document.getElementById("available");
   const output = document.getElementById("output");
   output.innerText = "";
   const available = availableInput.value.trim().toUpperCase();
   currentlyDisplayed.length = 0;
   permutations(available).forEach(string => {
-    if (words.has(string)) {
+    if (words.has(string) && re.test(string)) {
       const div = document.createElement("div");
       div.innerText = string;
       output.appendChild(div);
@@ -74,8 +78,13 @@ function patternChanged() {
   const reDebugOut = document.getElementById("regex");
   const pattern = patternInput.value;
   showAllButton.disabled = pattern == "";
-  const re = makeRegularExpression(pattern);
+  re = makeRegularExpression(pattern);
   reDebugOut.innerText = re.toString();
+}
+
+function updateGUI() {
+  patternChanged();
+  availableChanged();
 }
 
 function showAll() {

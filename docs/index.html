@@ -5,10 +5,10 @@
   </HEAD>
   <BODY ONLOAD="initOnce()">
     <DIV>
-      Letters: <INPUT ID="available" ONINPUT="availableChanged(this)"></INPUT> 
+      Letters: <INPUT ID="available" ONINPUT="updateGUI()"></INPUT> 
     </DIV>
     <DIV>
-      Pattern: <INPUT ID="pattern" ONINPUT="patternChanged()"></INPUT> <BUTTON id="show all" disabled ONCLICK="showAll()">Show All</BUTTON> <SPAN style="font-family: monospace" ID="regex">//</SPAN>
+      Pattern: <INPUT ID="pattern" ONINPUT="updateGUI()"></INPUT> <BUTTON id="show all" disabled ONCLICK="showAll()">Show All</BUTTON> <SPAN style="font-family: monospace; opacity: 50%;" ID="regex">//</SPAN>
     </DIV>
     <DIV ID="output" STYLE="border: 0.2em solid blue; padding: 0.2em; display: inline-block;">
     </DIV> 
